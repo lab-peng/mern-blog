@@ -1,0 +1,2 @@
+E: request to https://registry.npm.taobao.org/create-vite failed, reason: certificate has expired
+S: npm config set strict-ssl false
