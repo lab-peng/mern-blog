@@ -12,9 +12,14 @@ export default function Header() {
             Liangyu's Blog
         </Link>
         <form>
-            <TextInput type="text" placeholder="Search..."  rightIcon={AiOutlineSearch} className="hidden lg:inline"/>
+            <TextInput 
+                type="text" 
+                placeholder="Search..."  
+                rightIcon={AiOutlineSearch} 
+                className="hidden lg:inline"
+            />
         </form>
-        <Button className="w-12 h-10" color="gray">
+        <Button className="w-12 h-10 lg:hidden" color="gray">
             <AiOutlineSearch />
         </Button>
         <div className="flex gap-2 md:order-2">
@@ -22,7 +27,7 @@ export default function Header() {
                 <FaMoon />
             </Button>
             <Link to='/sign-in'>
-                <Button gradientDuoTone="purpleToBlue">
+                <Button gradientDuoTone="purpleToBlue" outline>
                     Sign In 
                 </Button>
             </Link>
@@ -30,17 +35,17 @@ export default function Header() {
         </div>
         <Navbar.Collapse>
             <Navbar.Link active={path === "/"} as={"div"}>
-                <Link to="/">
+                <Link to="/"  className="font-semibold">
                     Home
                 </Link>
             </Navbar.Link>
             <Navbar.Link active={path === "/about"} as={"div"}>
-                <Link to="/about">
+                <Link to="/about" className="font-semibold">
                     About
                 </Link>
             </Navbar.Link>
             <Navbar.Link active={path === "/projects"} as={"div"}>
-                <Link to="/projects">
+                <Link to="/projects" className="font-semibold">
                     Projects
                 </Link>
             </Navbar.Link>
