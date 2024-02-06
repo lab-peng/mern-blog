@@ -17,6 +17,7 @@ export default function Header() {
                 placeholder='Search...'  
                 rightIcon={AiOutlineSearch} 
                 className='hidden lg:inline'
+                id='search'
             />
         </form>
         <Button className='w-12 h-10 lg:hidden' color='gray'>
@@ -26,9 +27,12 @@ export default function Header() {
             <Button className='w-12 h-10 hidden sm:inline' color='gray' pill>
                 <FaMoon />
             </Button>
-            <Link to='/sign-in'>
+            <Link to='/sign-in' className='self-center text-xs text-blue-500 px-2 py-1 hover:underline'>
+                Sign In
+            </Link>
+            <Link to='/sign-up'>
                 <Button gradientDuoTone='purpleToBlue' outline>
-                    Sign In 
+                    Sign Up
                 </Button>
             </Link>
             <Navbar.Toggle />

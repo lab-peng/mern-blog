@@ -1,4 +1,5 @@
-import express from 'express';
+import express from 'express'
+import cors from "cors"
 import mongoose, { Mongoose } from 'mongoose'
 import dotenv from 'dotenv'
 import userRoutes from './routes/user.route.js'
@@ -19,6 +20,7 @@ app.listen(3000, () => {
   console.log('Server is running on port 3000!');
 });
 
+app.use(cors());
 app.use('/api/user', userRoutes);
 app.use('/api/auth', authRoutes);
 
