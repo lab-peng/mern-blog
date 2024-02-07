@@ -27,9 +27,9 @@ export default function SignUp() {
       });
       const data = await res.json();  
       if (data.success === false) {
-         return setErrorMessage(data.message);
+        setLoading(false);
+        return setErrorMessage(data.message);
       }
-      setLoading(false);
       if (res.ok) {
         navigate('/sign-in');
        }
@@ -73,7 +73,9 @@ export default function SignUp() {
                 <Spinner size='sm'/>
                 <span className='pl-3'>Loading...</span>
                 </>
-              ) : 'Sign Up'
+              ) : (
+                'Sign Up'
+                )
               }
           </Button>
         </form>
