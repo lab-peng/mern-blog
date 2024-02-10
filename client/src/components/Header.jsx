@@ -1,10 +1,12 @@
-import { Navbar, TextInput, Button } from 'flowbite-react';
+import { Navbar, TextInput, Button, Dropdown, Avatar } from 'flowbite-react';
 import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { FaMoon } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
 
 export default function Header() {
     const path = useLocation().pathname;
+    const { crtUser } = useSelector(state => state.user);
   return (
     <Navbar className='border-b-2'>
         <Link to='/' className='self-center whitespace-nowrap text-sm sm:text-xl font-semibold dark:text-white'>
@@ -27,14 +29,43 @@ export default function Header() {
             <Button className='w-12 h-10 hidden sm:inline' color='gray' pill>
                 <FaMoon />
             </Button>
-            <Link to='/sign-in' className='self-center text-xs text-blue-500 px-2 py-1 hover:underline'>
-                Sign In
-            </Link>
-            <Link to='/sign-up'>
-                <Button gradientDuoTone='purpleToBlue' outline>
-                    Sign Up
-                </Button>
-            </Link>
+            {
+                crtUser ? (
+                    <Dropdown
+                        arrowIcon={false}
+                        inline
+                        label = {
+                            <Avatar 
+                                alt='Profile Picture'
+                                img={crtUser.profilePicture}
+                                rounded
+                            />
+                        }
+                    >
+                        <Dropdown.Header>
+                            <span className='block text-sm'>@{crtUser.username}</span>
+                            <span className='block text-sm font-medium truncate'>{crtUser.email}</span>
+                        </Dropdown.Header>
+                        <Link to={'/dashboard?tab=profile'}>
+                            <Dropdown.Item>Profile</Dropdown.Item>
+                        </Link>
+                        <Dropdown.Divider />
+                        <Dropdown.Item>Sign Out</Dropdown.Item>
+                    </Dropdown>
+                ): 
+                (
+                    <>
+                        <Link to='/sign-in' className='self-center text-xs text-blue-500 px-2 py-1 hover:underline'>
+                            Sign In
+                        </Link>
+                        <Link to='/sign-up'>
+                            <Button gradientDuoTone='purpleToBlue' outline>
+                                Sign Up
+                            </Button>
+                        </Link>
+                    </>
+                )
+            }
             <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
