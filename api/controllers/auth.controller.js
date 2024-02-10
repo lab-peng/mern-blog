@@ -42,7 +42,7 @@ export const signin = async (req, res, next) => {
             next(errorHandler(400, 'Invalid password!'))
             return
         }
-        const {password, ...userInfo } = validUser._doc;
+        const {password: passwd, ...userInfo } = validUser._doc;
 
         const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
         res.status(200).cookie('access_token', token, { httpOnly: true }).json(userInfo);
