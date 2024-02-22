@@ -20,3 +20,9 @@ app.use(cors());
 alt+shift+down_arrow:  copy the selected and pasted below
 
 
+problem: no cookies found in the browser
+=> 401, unauthorized error 
+I don't know what to do, but I can git pull the the project,
+checkout to that specific commit and check whether it works on
+the youtuber's code at first
+ 
